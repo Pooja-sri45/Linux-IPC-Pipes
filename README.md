@@ -25,7 +25,6 @@ Testing the C Program for the desired output.
 
 ## C Program that illustrate communication between two process using unnamed pipes using Linux API system calls
 ```
-#include<stdio.h>
 #include<stdlib.h>
 #include<sys/types.h> 
 #include<sys/stat.h> 
@@ -52,18 +51,7 @@ client(p1[1],p2[0]);
 wait(waits); 
 return 0; 
 } 
-void client(int wfd,int rfd) {
-int i,j,n; char fname[2000];
-char buff[2000];
-printf("ENTER THE FILE NAME :");
-scanf("%s",fname);
-printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
-sleep(10);
-write(wfd,fname,2000);
-n=read(rfd,buff,2000);
-buff[n]='\0';
-printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
-}
+
 void server(int rfd,int wfd) 
 { 
 int i,j,n; 
@@ -79,6 +67,20 @@ else
 n=read(fd,buff,2000); 
 write(wfd,buff,n); 
 }
+void client(int wfd,int rfd) {
+int i,j,n; char fname[2000];
+char buff[2000];
+printf("ENTER THE FILE NAME :");
+scanf("%s",fname);
+printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
+sleep(10);
+write(wfd,fname,2000);
+n=read(rfd,buff,2000);
+buff[n]='\0';
+printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
+}
+
+
 
 ```
 
@@ -89,7 +91,10 @@ write(wfd,buff,n);
 
 # OUTPUT:
 
-![image](https://github.com/Pooja-sri45/Linux-IPC-Pipes/assets/147081893/f629cbfb-928a-4041-80d5-03728c6fe5e1)
+![image](https://github.com/Pooja-sri45/Linux-IPC-Pipes/assets/147081893/deef099e-5b0f-4b37-933c-7498d9f69f76)
+
+
+
 
 
 
@@ -113,7 +118,12 @@ exit(EXIT_SUCCESS);
 
 # OUTPUT:
 
-![image](https://github.com/Pooja-sri45/Linux-IPC-Pipes/assets/147081893/42dbe2a0-7da1-4219-bca1-d9c0d0a332ec)
+![image](https://github.com/Pooja-sri45/Linux-IPC-Pipes/assets/147081893/4d2d71aa-2d3e-436a-8bde-051fad889f1f)
+![image](https://github.com/Pooja-sri45/Linux-IPC-Pipes/assets/147081893/38980edb-2656-4d50-b7b6-4794da40c7f9)
+
+
+
+
 
 
 
